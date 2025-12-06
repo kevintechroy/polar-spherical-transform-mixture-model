@@ -2,10 +2,6 @@ import numpy as np
 from scipy.special import i0
 from sklearn.base import BaseEstimator, ClassifierMixin
 
-# -----------------------------------------------------------
-#  Wrapping your existing PSTMM implementation
-#  (exactly as is — unchanged)
-# -----------------------------------------------------------
 # ============================================================================
 #  Custom Model Class- PolarSphericalClassifier
 # ============================================================================
@@ -357,7 +353,7 @@ class PolarSphericalClassifier(BaseEstimator, ClassifierMixin):
 
 
     # -------------------------------------------------------
-    #  PREDICT PROBA
+    #  PREDICT PROB
     # -------------------------------------------------------
     def predict_prob(self, X):
         return self._model.predict_prob(X)

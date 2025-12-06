@@ -3,10 +3,10 @@ from scipy.special import i0
 from sklearn.base import BaseEstimator, ClassifierMixin
 
 # ---------------------------------------------------------------------------
-# Polar-Spherical Transform Mixture Model (PSTMM) - corrected version
-# - preserves your variable names and overall structure
+# Polar-Spherical Transform Mixture Model (PSTMM) - updated version
+# - preserves the variable names and overall structure
 # - fixes ternary-spherical indexing bug
-# - provides pairwise polar, cartesian->spherical, and ternary-spherical tra  nsforms
+# - provides pairwise polar, cartesian->spherical, and ternary-spherical tra nsforms
 # - computes Cartesian Gaussian params from resp and evaluates Gaussians in Cartesian space
 # ---------------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ class PSTMM():
         self.covs_cart_ = None
 
     # ----------------------------------------------------------------------
-    #  TRANSFORMS (user-provided implementations integrated)
+    #  TRANSFORMS
     # ----------------------------------------------------------------------
     def _cartesian_to_pairwise_polar(self, matrix: np.ndarray) -> np.ndarray:
         matrix = np.asarray(matrix, dtype=float)
@@ -142,7 +142,7 @@ class PSTMM():
 
     # Compatibility wrapper: original code used _pairwise_polar and _ternary_spherical names.
     def _pairwise_polar(self, matrix: np.ndarray) -> np.ndarray:
-        # user provided pairwise polar function returns packed pairs in same-size matrix
+        # pairwise polar function returns packed pairs in same-size matrix
         return self._cartesian_to_pairwise_polar(matrix)
 
     def _ternary_spherical(self, X: np.ndarray):
@@ -459,7 +459,7 @@ class PSTMM():
 
 
 # ===========================================================
-#  SKLEARN-COMPATIBLE WRAPPER (keeps your original API/behavior)
+#  SKLEARN-COMPATIBLE WRAPPER (keeps the original API/behavior)
 # ===========================================================
 
 class PolarSphericalClassifier(BaseEstimator, ClassifierMixin):
@@ -513,7 +513,7 @@ class PolarSphericalClassifier(BaseEstimator, ClassifierMixin):
 
 
     # -------------------------------------------------------
-    #  PREDICT PROBA
+    #  PREDICT PROB
     # -------------------------------------------------------
     def predict_prob(self, X):
         return self._model.predict_prob(X)
